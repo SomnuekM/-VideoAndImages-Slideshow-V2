@@ -5,3 +5,5 @@ Slide Show Image and Video
 
 ![image](https://user-images.githubusercontent.com/58202287/136360577-6ca649ac-8884-4ea6-a03d-02f61997f26f.png)
 
+[Example2](https://somnuekm.github.io/VideoAndImages-Slideshow-V2/example2.html)
+
