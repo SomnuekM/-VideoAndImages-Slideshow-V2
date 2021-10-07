@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="https://github.com/SomnuekM/video_and_images_slideshow.github.io">
+    <link rel="icon" href="">
+
+    <title>Sticky Footer Navbar Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
+    <!-- Custom styles for this template -->
+    <link href="sticky-footer-navbar.css" rel="stylesheet">
+</head>
+
+<body class="hideScollBar">
+
+    <header>
+        <!-- Fixed navbar -->
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <a class="navbar-brand" href="https://github.com/SomnuekM/video_and_images_slideshow.github.io">Videos slideshow</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav ml-auto">
+                    <!-- Nav Item - User Information -->
+                    <li class="nav-item dropdown no-arrow">
+                        <a>
+                            <span class="h2 mb-0 font-weight-bold mr-2 d-none d-lg-inline text-gray-400" id="Date">17/05/2021</span>
+                            <span class="h2 mb-0 font-weight-bold mr-2 d-none d-lg-inline text-white" id="Time">20:12</span>
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+        </nav>
+    </header>
+
+    <!-- Begin page content -->
+    <main role="main">
+        <div id="slideshow"></div>
+    </main>
+
+    <footer class="footer bg-dark">
+        <span class="marquee  h2 mb-0 text-white">
+            <span  id="txtSlide"></span>
+        </span>
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous">
+    </script>
+
+    <script>
+        function img(src) {
+            var el = document.createElement('img');
+            el.classList.add("my_ads_medias");
+            el.src = src;
+            return el;
+        }
+
+        function vid() {
+            //Accepts any number of 'src' to a same video ('.mp4', '.ogg' or '.webm')
+            var el = document.createElement('video');
+            el.classList.add("my_ads_medias");
+            var source = document.createElement('source');
+
+            for (var i = 0; i < arguments.length; i++) {
+                source.src = arguments[i];
+                source.type = "video/" + arguments[i].split('.')[arguments[i].split('.').length - 1];
+                el.appendChild(source);
+            }
+
+            el.onplay = function() {
+                clearInterval(sliding);
+            };
+
+            el.onended = function() {
+                sliding = setInterval(rotateimages, 10 * 1000);
+                rotateimages();
+            };
+
+            return el;
+        }
+
+
+
+        var galleryarray = [
+            img('https://cdn.pixabay.com/photo/2017/11/09/21/41/cat-2934720_960_720.jpg'),
+            vid('https://www.w3schools.com/html/movie.mp4'),
+            img('https://cdn.pixabay.com/photo/2017/11/14/13/06/kitty-2948404_960_720.jpg'),
+            vid('https://www.w3schools.com/html/mov_bbb.mp4'),
+            img('https://cdn.pixabay.com/photo/2017/02/20/18/03/cat-2083492_960_720.jpg'),
+        ];
+
+
+        function getMedias(media) {
+            for (var i in media) {
+                var res = media[i].split("."); //แยกเอา fileType
+                if (res[res.length - 1] == 'png' || res[res.length - 1] == 'jpg' || res[res.length - 1] == 'JPG') {
+                    galleryarray.push(img(media[i]))
+                }
+
+                if (res[res.length - 1] == 'mp4' || res[res.length - 1] == 'MP4') {
+                    galleryarray.push(vid(media[i]))
+                }
+            }
+        }
+
+        console.log(galleryarray)
+
+        var curimg = 1;
+
+        function rotateimages() {
+            $("#slideshow").fadeOut("slow");
+            setTimeout(function() {
+                curimg = (curimg < galleryarray.length - 1) ? curimg + 1 : 0
+                document.getElementById('slideshow').innerHTML = '';
+
+                document.getElementById('slideshow').appendChild(galleryarray[curimg]);
+
+                if (galleryarray[curimg].tagName === "VIDEO") {
+                    galleryarray[curimg].setAttribute("autoplay", "true");
+                    galleryarray[curimg].muted = false; //Default Open Sound
+                    galleryarray[curimg].play();
+                }
+
+                $("#slideshow").fadeIn("slow");
+            }, 1 * 1000);
+        }
+
+
+        var sliding;
+        window.addEventListener('load', function() {
+            sliding = setInterval(rotateimages, 10 * 1000);
+            rotateimages();
+        });
+
+
+        let textSlide = [
+            " 🔘 The most basic list group is an unordered list with list items and the proper classes. Build upon it with the options that follow, or with your own CSS as needed.",
+            " 🔘 A card is a flexible and extensible content container. It includes options for headers and footers, a wide variety of content, contextual background colors, and powerful display options. If you’re familiar with Bootstrap 3, cards replace our old panels, wells, and thumbnails. Similar functionality to those components is available as modifier classes for cards."
+        ]
+        var Alltxt = textSlide.join("&nbsp;&nbsp;");
+        document.getElementById('txtSlide').innerHTML = Alltxt;
+    </script>
+</body>
+
+</html>
