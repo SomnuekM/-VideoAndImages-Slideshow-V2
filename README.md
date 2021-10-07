@@ -1,5 +1,5 @@
 ### VideoAndImages-Slideshow-V2
-Slide Show Image and Video
+Slide Show Image and Video (Update Responsive UI)
 
 [Example1](https://somnuekm.github.io/VideoAndImages-Slideshow-V2/example1.html)
 
