@@ -1,0 +1,147 @@
+/* Sticky footer styles
+-------------------------------------------------- */
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=K2D:wght@300&display=swap');
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'K2D', sans-serif;
+}
+
+.my_ads_medias {
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+    position: absolute;
+    object-fit: fill;
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    font-size: 1rem;
+    /* Set the fixed height of the footer here */
+    height: 60px;
+    line-height: 60px;
+    /* Vertically center the text there */
+    background-color: #f5f5f5;
+}
+
+
+/* Custom page CSS
+  -------------------------------------------------- */
+
+
+/* Not required for template or sticky footer method. */
+
+body>.container {
+    padding: 60px 15px 0;
+}
+
+.footer>.container {
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
+code {
+    font-size: 80%;
+}
+
+.hideScollBar {
+    overflow-y: scroll;
+    /* Add the ability to scroll */
+}
+
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+
+.hideScollBar::-webkit-scrollbar {
+    display: none;
+}
+
+
+/* Hide scrollbar for IE, Edge and Firefox */
+
+.hideScollBar {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+
+/* Slider Text */
+
+.marquee {
+    margin: 0 auto;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.marquee span {
+    display: inline-block;
+    padding-left: 100%;
+    animation: marquee 100s linear infinite;
+}
+
+@keyframes marquee {
+    0% {
+        transform: translate(0, 0);
+    }
+    100% {
+        transform: translate(-100%, 0);
+    }
+}
+
+#sidebar {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 376.2px;
+    height: 100vh;
+    right: 0;
+    overflow-x: hidden;
+    overflow: scroll;
+}
+
+#sidebar::-webkit-scrollbar {
+    width: 12px;
+    /* width of the entire scrollbar */
+}
+
+#sidebar::-webkit-scrollbar-track {
+    background: rgb(255, 255, 255);
+    /* color of the tracking area */
+}
+
+#sidebar::-webkit-scrollbar-thumb {
+    scrollbar-color: #ebd3b1 #e4e4e4;
+    /* color of the scroll thumb */
+    border-radius: 20px;
+    /* roundness of the scroll thumb */
+    border: 3px solid rgb(223, 196, 145);
+    /* creates padding around scroll thumb */
+}
+
+#sidebar a {
+    transition: 0.3s;
+}
+
+#sidebar a:hover {
+    color: #ec6a00;
+}
+
+#sidebar:after {
+    content: '';
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
