@@ -7,3 +7,6 @@ Slide Show Image and Video
 
 [Example2](https://somnuekm.github.io/VideoAndImages-Slideshow-V2/example2.html)
 
+![image](https://user-images.githubusercontent.com/58202287/136369429-f3b4daaa-7a90-4f17-aa59-52140c67decb.png)
+
+
